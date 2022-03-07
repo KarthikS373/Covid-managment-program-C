@@ -6,12 +6,17 @@
     #include<ctype.h>
     #include<string.h>
     #include<stdlib.h>
-    
-    #define ull unsigned long long
-    #define ll long long
+    #include<time.h>
+
+    typedef unsigned long long ull;
+    typedef long long ll;
 
     #define MARGIN printf("\n\n\n\n\n\n\n\n\n\n"); 
     #define smMARGIN printf("\n\n\n\n"); 
     #define xsmMARGIN printf("\n\n"); 
+
+    #include "pateint.h"
+    #include "menu.h"
+    #include "title.h"
     
 #endif

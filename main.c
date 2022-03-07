@@ -1,7 +1,5 @@
 #include "header.h"
 #include "welcome.c"
-#include "title.c"
-#include "menu.c"
 
 
 int main(){
@@ -10,6 +8,13 @@ int main(){
 
     titleBar();  // title.c
     int choice = homeMenu();
+
+    switch(choice){
+        case 1:
+            patientReg();
+        default:
+            printf("INVALID OPTION");
+    }
 
     return 0;
 }

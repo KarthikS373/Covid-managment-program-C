@@ -15,8 +15,7 @@ int homeMenu(){
     smMARGIN
     printf("\t\t\t\tEnter a Menu: \n");
     xsmMARGIN
-    int choice;
+    static int choice;
     scanf("%d", choice);
     return choice;
-    
 }
