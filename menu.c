@@ -12,10 +12,7 @@ int homeMenu(){
     printf("\t\t\t\t      4. Vaccinne helper  \n\n");
     xsmMARGIN
     printf("\t\t\t\t      5. Health Check  \n\n");
-    smMARGIN
-    printf("\t\t\t\tEnter a Menu: \n");
-    xsmMARGIN
-    static int choice;
-    scanf("%d", choice);
-    return choice;
+    char choices[2];
+    fgets(choices, 2, stdin);
+    return (atoi(choices));
 }

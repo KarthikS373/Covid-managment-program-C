@@ -54,7 +54,7 @@ int _validateForm(char name[], int age, char email[], char contact[], char passw
     } else if( age <= 0 ) {
         printf("Enter a valid age !!");
         return -2;
-    } else if( strlen(contact) != 0 ){
+    } else if( strlen(contact) != 10 ){
         printf("Enter a phone number !!");
         return -3;
     } else if( passwd != cpasswd || strlen(passwd) <= 4){

@@ -7,14 +7,18 @@ int main(){
     welcomeScreen(); // welcome.c
 
     titleBar();  // title.c
-    int choice = homeMenu();
+    int choice = homeMenu(); // menu.c
+    // printf("%d ", choice);
 
+    system("cls");
     switch(choice){
-        case 1:
+        case 1: 
             patientReg();
+            break;
         default:
-            printf("INVALID OPTION");
+            printf("Invalid entry");
     }
+
 
     return 0;
 }
