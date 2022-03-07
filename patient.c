@@ -19,6 +19,7 @@ void _patientInsertCreds(ull ID, char name[], int age, char contact[], char emai
         getch();
     } else {
         fprintf(patientFile, "%llu, %s, %d, %s, %s\n", ID, name, age, contact, email );
+        xsmMARGIN
         printf("Patient added successfully");
     }
     fclose(patientFile);
@@ -34,6 +35,7 @@ void _patientStorePasswd(ull ID, char passwd[]){
         getch();
     } else {
         fprintf(passwdFile, "%llu, %s", ID, passwd );
+        xsmMARGIN
         printf("password added successfully");
     }
     fclose(passwdFile);
@@ -47,86 +49,98 @@ ull _generateID(){
 }
 
 
-int _validateForm(char name[], int age, char email[], char contact[], char passwd[], char cpasswd[]){
-    if( strlen(name) <= 0 ){
-        printf("Enter a valid name !!");
-        return -1;
-    } else if( age <= 0 ) {
-        printf("Enter a valid age !!");
-        return -2;
-    } else if( strlen(contact) != 10 ){
-        printf("Enter a phone number !!");
-        return -3;
-    } else if( passwd != cpasswd || strlen(passwd) <= 4){
-        printf("Please check ur password !!");
-        return -4;
-    } else {
-        int ct = 0;
-        for (int i = 0; i < strlen(email); i++) 
-            if ( email[i] == '@' )
-                ct++;
-        if(ct == 0){
-            printf("Please enter a valid email !!");
-            return -5;
-        }
-    }
-    return 1;
-}
-    
-
 void patientReg(){
     system("cls");
     patient p;
     srand((unsigned) time(0));
     p.ID =  _generateID();
-    NAME:
-    printf("\n\t\t\t Enter the patient name: \n");
-    scanf("%s %s", &p.firstName, &p.lastName);
-    AGE:
-    printf("\n\t\t\t Enter the patient age: \n");
-    scanf("%d", &p.age);
-    CONTACT:
-    printf("\n\t\t\t Enter the patient contact number: \n");
-    scanf("%s", &p.contactNumber);
-    EMAIL:
-    printf("\n\t\t\t Enter the patient email: \n");
-    scanf("%s", &p.email);
     char name[40];
-    strcpy(name, p.firstName);
-    strcat(name, " ");
-    strcat(name, p.lastName);
-    
-    PASSWD:
-    printf("\n\t\t\t Enter the password for your account: \n");
-    scanf("%s", &p.passwd);
-    char cpasswd[20];
-    printf("\n\t\t\t Confirm password: \n");
-    scanf("%s", &cpasswd);
+    short validate = 0;
+    // Name validation
+    do{
+        printf("\n\t\t\t Enter the patient name: \n");
+        scanf("%s %s", &p.firstName, &p.lastName);
+        strcpy(name, p.firstName);
+        strcat(name, " ");
+        strcat(name, p.lastName);
+        if( strlen(name) <= 0 ){
+            printf("\nEnter a valid name !!");
+            validate = 0;
+        } else {
+            validate = 1;
+        }
+    } while(!validate);
 
-    int validate = _validateForm(name, p.age, p.email, p.contactNumber, p.passwd, cpasswd);
+
+    // Age validation
+    do{
+        printf("\n\t\t\t Enter the patient age: \n");
+        scanf("%d", &p.age);
+        if( p.age <= 0 ) {
+            printf("\nEnter a valid age !!");
+            validate = 0;
+        } else {
+            validate = 1;
+        }
+    } while (!validate);
+
+    // Contact number
+    do{
+        printf("\n\t\t\t Enter the patient contact number: \n");
+        scanf("%s", &p.contactNumber);
+        if( strlen(p.contactNumber) != 10 ) {
+            printf("\nEnter a valid phone number !!");
+            validate = 0;
+        } else {
+            validate = 1;
+        }
+    } while (!validate);
+
+    // Email
+    do{
+        printf("\n\t\t\t Enter the patient email: \n");
+        scanf("%s", &p.email);
+        int ct = 0;
+        for (int i = 0; i < strlen(p.email); i++) 
+            if ( p.email[i] == '@' )
+                ct++;
+        if(ct == 0) {
+            printf("Please enter a valid email !!");
+            validate = 0;
+        } else {
+            validate = 1;
+        }
+    } while (!validate);
+
+    // Password
+    do{
+        printf("\n\t\t\t Enter the password for your account: \n");
+        scanf("%s", &p.passwd);
+        if(strlen(p.passwd) <= 3){
+            printf("\nEnter a valid password with 4+ characters !!!");
+            validate = 0;
+            continue;
+        }
+        char cpasswd[20];
+        printf("\n\t\t\t Confirm password: \n");
+        scanf("%s", &cpasswd);
+
+        short tempVerif = 0;
+        for(int j = 0; j < strlen(p.passwd); j++)
+            if(p.passwd[j] == cpasswd[j])
+                tempVerif = 1;
+
+        if ( !tempVerif ){
+            printf("Please check ur password !!");
+            validate = 0;
+        } else {
+            validate = 1;
+        }
+    } while (!validate);
+
     if(validate){
         _patientInsertCreds(p.ID, name, p.age, p.contactNumber, p.email);
         _patientStorePasswd(p.ID, p.passwd);
-    } else {
-        switch (validate) {
-        case -1 :
-            goto NAME;
-            break;
-        case -2 :
-            goto AGE;
-            break;
-        case -3 :
-            goto CONTACT;
-            break;
-        case -4 :
-            goto PASSWD;
-            break;
-        case -5 :
-            goto EMAIL;
-            break;
-        
-        default:
-            break;
-        }
-    }
+        MARGIN
+    } 
 }

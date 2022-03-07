@@ -8,7 +8,6 @@ int main(){
 
     titleBar();  // title.c
     int choice = homeMenu(); // menu.c
-    // printf("%d ", choice);
 
     system("cls");
     switch(choice){

@@ -14,6 +14,10 @@
     #define MARGIN printf("\n\n\n\n\n\n\n\n\n\n"); 
     #define smMARGIN printf("\n\n\n\n"); 
     #define xsmMARGIN printf("\n\n"); 
+    #define ENTER 13
+    #define TAB 9
+    #define BKSP 8
+    #define SPACE 32
 
     #include "pateint.h"
     #include "menu.h"
