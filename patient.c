@@ -10,6 +10,8 @@ typedef struct patient{
     char passwd[20];
     } patient;
 
+
+// ********************************************** PATIENT FILE HANDLING **********************************************
 // Insert data into patientLog.csv
 void _patientInsertCreds(ull ID, char name[], int age, char contact[], char email[]){
     FILE * patientFile = fopen("./files/patientLog.csv", "w");
@@ -20,7 +22,7 @@ void _patientInsertCreds(ull ID, char name[], int age, char contact[], char emai
     } else {
         fprintf(patientFile, "%llu, %s, %d, %s, %s\n", ID, name, age, contact, email );
         xsmMARGIN
-        printf("Patient added successfully");
+        printf("\t\t\tPatient added successfully");
     }
     fclose(patientFile);
     return;
@@ -36,13 +38,15 @@ void _patientStorePasswd(ull ID, char passwd[]){
     } else {
         fprintf(passwdFile, "%llu, %s", ID, passwd );
         xsmMARGIN
-        printf("password added successfully");
+        printf("\t\t\tpassword added successfully");
     }
     fclose(passwdFile);
     return;
     
 }
 
+
+//  ******************************* PATIENT REGISTRATION *******************************
 ull _generateID(){
     ull ID = (rand() % (900000)) + 100000;
     return ID;
@@ -58,13 +62,14 @@ void patientReg(){
     short validate = 0;
     // Name validation
     do{
-        printf("\n\t\t\t Enter the patient name: \n");
+        printf("\n\t\t\t Enter the patient name: ");
         scanf("%s %s", &p.firstName, &p.lastName);
         strcpy(name, p.firstName);
         strcat(name, " ");
         strcat(name, p.lastName);
         if( strlen(name) <= 0 ){
-            printf("\nEnter a valid name !!");
+            printf("\n\t\t\tEnter a valid name !!");
+            xsmMARGIN
             validate = 0;
         } else {
             validate = 1;
@@ -74,10 +79,11 @@ void patientReg(){
 
     // Age validation
     do{
-        printf("\n\t\t\t Enter the patient age: \n");
+        printf("\n\t\t\t Enter the patient age: ");
         scanf("%d", &p.age);
         if( p.age <= 0 ) {
-            printf("\nEnter a valid age !!");
+            printf("\n\t\t\tEnter a valid age !!");
+            xsmMARGIN
             validate = 0;
         } else {
             validate = 1;
@@ -86,10 +92,11 @@ void patientReg(){
 
     // Contact number
     do{
-        printf("\n\t\t\t Enter the patient contact number: \n");
+        printf("\n\t\t\t Enter the patient contact number: ");
         scanf("%s", &p.contactNumber);
         if( strlen(p.contactNumber) != 10 ) {
-            printf("\nEnter a valid phone number !!");
+            printf("\n\t\t\tEnter a valid phone number !!");
+            xsmMARGIN
             validate = 0;
         } else {
             validate = 1;
@@ -98,14 +105,15 @@ void patientReg(){
 
     // Email
     do{
-        printf("\n\t\t\t Enter the patient email: \n");
+        printf("\n\t\t\t Enter the patient email: ");
         scanf("%s", &p.email);
         int ct = 0;
         for (int i = 0; i < strlen(p.email); i++) 
             if ( p.email[i] == '@' )
                 ct++;
         if(ct == 0) {
-            printf("Please enter a valid email !!");
+            printf("\t\t\tPlease enter a valid email !!");
+            xsmMARGIN
             validate = 0;
         } else {
             validate = 1;
@@ -114,25 +122,28 @@ void patientReg(){
 
     // Password
     do{
-        printf("\n\t\t\t Enter the password for your account: \n");
+        printf("\n\t\t\t Enter the password for your account: ");
         scanf("%s", &p.passwd);
         if(strlen(p.passwd) <= 3){
-            printf("\nEnter a valid password with 4+ characters !!!");
+            printf("\n\t\t\tEnter a valid password with 4+ characters !!!");
             validate = 0;
+            xsmMARGIN
             continue;
         }
         char cpasswd[20];
-        printf("\n\t\t\t Confirm password: \n");
+        printf("\n\t\t\t Confirm password: ");
         scanf("%s", &cpasswd);
 
         short tempVerif = 0;
+        int len = ( strlen(p.passwd) >= strlen(cpasswd)) ? strlen(p.passwd) : strlen(cpasswd);
         for(int j = 0; j < strlen(p.passwd); j++)
             if(p.passwd[j] == cpasswd[j])
                 tempVerif = 1;
 
         if ( !tempVerif ){
-            printf("Please check ur password !!");
+            printf("\t\t\tPlease check ur password !!");
             validate = 0;
+            xsmMARGIN
         } else {
             validate = 1;
         }
@@ -141,6 +152,23 @@ void patientReg(){
     if(validate){
         _patientInsertCreds(p.ID, name, p.age, p.contactNumber, p.email);
         _patientStorePasswd(p.ID, p.passwd);
+        printf("\t\t\t\t Your Patient ID is %d", p.ID);
         MARGIN
     } 
+}
+
+
+
+
+// **************************************** PATIENT LOGIN **************************************************
+void patientLog(){
+    system("cls");
+    patientTitleBar();
+    smMARGIN
+    char Identify[10];
+    FLUSH
+    printf("\t\t\t Enter the patient ID : ");
+    gets(Identify);
+    int ID  = atoi(Identify);
+    MARGIN
 }

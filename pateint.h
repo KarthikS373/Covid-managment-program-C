@@ -4,3 +4,4 @@
 #endif
 
 void patientReg();
+void patientLog();

@@ -14,10 +14,15 @@ int main(){
         case 1: 
             patientReg();
             break;
+        case 2:
+            patientLog();
+            break;
         default:
             printf("Invalid entry");
     }
 
+
+    printf("MAIN EXCECUTION TERMINATED.......");
 
     return 0;
 }

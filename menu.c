@@ -12,6 +12,9 @@ int homeMenu(){
     printf("\t\t\t\t      4. Vaccinne helper  \n\n");
     xsmMARGIN
     printf("\t\t\t\t      5. Health Check  \n\n");
+    xsmMARGIN
+    printf("\t\t\t\t      ENTER MENU: ");
+    FLUSH
     char choices[2];
     fgets(choices, 2, stdin);
     return (atoi(choices));

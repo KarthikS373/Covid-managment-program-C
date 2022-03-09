@@ -18,6 +18,7 @@
     #define TAB 9
     #define BKSP 8
     #define SPACE 32
+    #define FLUSH fflush(stdin);
 
     #include "pateint.h"
     #include "menu.h"
