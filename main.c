@@ -21,7 +21,7 @@ int main(){
             printf("Invalid entry");
     }
 
-
+    xsmMARGIN
     printf("MAIN EXCECUTION TERMINATED.......");
 
     return 0;

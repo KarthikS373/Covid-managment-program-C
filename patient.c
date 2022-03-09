@@ -161,6 +161,34 @@ void patientReg(){
 
 
 // **************************************** PATIENT LOGIN **************************************************
+
+char * _authorizeLogin(int ID){
+    FILE * passwdFile = fopen("./files/patientPasswd.csv", "r");
+    if(!passwdFile){
+        printf("\t\t\t Services Currently unavailable Sorry for the inconvinience!... !!\n");
+        printf("\t\t\t Please press and key to return.....\n");
+        getch();
+    } else {
+        char line[200];
+        int row = 0;
+        int column = 0;
+
+        while (fgets(line, sizeof(line), passwdFile)) {
+            char *value;
+            value = strtok(line, ",");
+            if(atoi(value) == ID){
+                value = strtok(NULL, ",");
+                return value;
+            }
+        }
+        
+    }
+    char error[] = "error__";
+    char * errorCode = error;
+    fclose(passwdFile);
+    return errorCode;
+}
+
 void patientLog(){
     system("cls");
     patientTitleBar();
@@ -170,5 +198,16 @@ void patientLog(){
     printf("\t\t\t Enter the patient ID : ");
     gets(Identify);
     int ID  = atoi(Identify);
+    char * a = _authorizeLogin(ID); // returns the password as a string pointer
+    if(!strcmp(a, "error__")){
+        xsmMARGIN
+        printf("\t\t\t ID not found.....\n");
+        printf("\t\t\t Please press and key to return.....\n");
+        FLUSH
+        getch();
+        return;
+    } else{
+        // COMPLETE THE CODE
+    }
     MARGIN
 }
