@@ -5,6 +5,7 @@ typedef struct patient{
     char firstName[20];
     char lastName[20];
     int age;
+    char gender;
     char contactNumber[10];
     char email[30];
     char passwd[20];
@@ -83,6 +84,22 @@ void patientReg(){
         scanf("%d", &p.age);
         if( p.age <= 0 ) {
             printf("\n\t\t\tEnter a valid age !!");
+            xsmMARGIN
+            validate = 0;
+        } else {
+            validate = 1;
+        }
+    } while (!validate);
+
+
+    // Gender validation
+    do{
+        printf("\n\t\t\t Enter the patient Gender (M/F/O): ");
+        FLUSH
+        scanf("%c", &p.gender);
+        p.gender = toupper(p.gender);
+        if( p.gender != 'M' && p.gender != 'F' && p.gender != 'O') {
+            printf("\n\t\t\tEnter a valid Gender !!");
             xsmMARGIN
             validate = 0;
         } else {
@@ -208,6 +225,7 @@ void patientLog(){
         return;
     } else{
         // COMPLETE THE CODE
+        
     }
     MARGIN
 }
