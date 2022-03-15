@@ -12,7 +12,7 @@ typedef struct patient{
     } patient;
 
 
-// ********************************************** PATIENT FILE HANDLING **********************************************
+// ********************************************** PATIENT FILE INSERTING **********************************************
 // Insert data into patientLog.csv
 void _patientInsertCreds(ull ID, char name[], int age, char contact[], char email[]){
     FILE * patientFile = fopen("./files/patientLog.csv", "w");
@@ -169,7 +169,7 @@ void patientReg(){
     if(validate){
         _patientInsertCreds(p.ID, name, p.age, p.contactNumber, p.email);
         _patientStorePasswd(p.ID, p.passwd);
-        printf("\t\t\t\t Your Patient ID is %d", p.ID);
+        printf("\n\t\t\t\t Your Patient ID is %d", p.ID);
         MARGIN
     } 
 }
@@ -177,7 +177,7 @@ void patientReg(){
 
 
 
-// **************************************** PATIENT LOGIN **************************************************
+// **************************************** PATIENT FILE RETRIVING **************************************************
 
 char * _authorizeLogin(int ID){
     FILE * passwdFile = fopen("./files/patientPasswd.csv", "r");
@@ -206,6 +206,11 @@ char * _authorizeLogin(int ID){
     return errorCode;
 }
 
+
+
+
+// **************************************** PATIENT LOGIN *****************************************************
+
 void patientLog(){
     system("cls");
     patientTitleBar();
@@ -224,8 +229,10 @@ void patientLog(){
         getch();
         return;
     } else{
-        // COMPLETE THE CODE
+        _patientDetails();
         
     }
     MARGIN
 }
+
+

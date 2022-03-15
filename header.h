@@ -23,5 +23,6 @@
     #include "pateint.h"
     #include "menu.h"
     #include "title.h"
+    #include "graphic.h"
     
 #endif
