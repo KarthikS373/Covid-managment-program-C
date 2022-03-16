@@ -11,7 +11,20 @@ void _patientDetails(){
     GOTOXY(24, 12); printf("|\n");
     GOTOXY(80, 12); printf("|\n");
     xsmMARGIN
-    printf("\t\t\t|\t\t      PATIENT  MANAGER    \t\t|");
+    GOTOXY(45, 16)
+    printf("PATIENT  MANAGER");
+    GOTOXY(40, 17)
+    printf("-------------------------");
+    GOTOXY(40, 20)
+    printf("Name       :  %s");
+    GOTOXY(40, 22)
+    printf("Patient ID :  %d");
+    GOTOXY(40, 24)
+    printf("Gender     :  %c");
+    GOTOXY(40, 26)
+    printf("Contact    :  %s");
+    GOTOXY(40, 28)
+    printf("Email      :  %s");
     
     for(int i = 13; i < 42; ++i){
         GOTOXY(24, i); printf("|\n");

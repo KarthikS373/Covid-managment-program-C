@@ -141,7 +141,7 @@ void patientReg(){
     do{
         printf("\n\t\t\t Enter the password for your account: ");
         scanf("%s", &p.passwd);
-        if(strlen(p.passwd) <= 3){
+        if(strlen(p.passwd) <= 4){
             printf("\n\t\t\tEnter a valid password with 4+ characters !!!");
             validate = 0;
             xsmMARGIN
@@ -154,7 +154,7 @@ void patientReg(){
         short tempVerif = 0;
         int len = ( strlen(p.passwd) >= strlen(cpasswd)) ? strlen(p.passwd) : strlen(cpasswd);
         for(int j = 0; j < strlen(p.passwd); j++)
-            if(p.passwd[j] == cpasswd[j])
+            if(!strcmp(p.passwd, cpasswd))
                 tempVerif = 1;
 
         if ( !tempVerif ){
