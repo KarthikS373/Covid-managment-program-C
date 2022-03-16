@@ -13,22 +13,22 @@ void _patientDetails(int ID, char name[], int age, char number[], char email[], 
     xsmMARGIN
     GOTOXY(45, 16)
     printf("PATIENT  MANAGER");
-    GOTOXY(40, 17)
-    printf("-------------------------");
-    GOTOXY(40, 20)
+    GOTOXY(37, 17)
+    printf("-----------------------------");
+    GOTOXY(37, 20)
     printf("Name       :  %s", name);
-    GOTOXY(40, 22)
+    GOTOXY(37, 22)
     printf("Patient ID :  %d", ID);
-    GOTOXY(40, 24)
+    GOTOXY(37, 24)
     printf("Age        :  %d", age);
-    GOTOXY(40, 26)
+    GOTOXY(37, 26)
     printf("Gender     :  %c", gender);
-    GOTOXY(40, 28)
+    GOTOXY(37, 28)
     char contactNum[11];
     for(int i = 0; i < 10; ++i)
         contactNum[i] = number[i];
     printf("Contact    :  %s", contactNum);
-    GOTOXY(40, 30)
+    GOTOXY(37, 30)
     printf("Email      :  %s", email);
     
     for(int i = 13; i < 42; ++i){

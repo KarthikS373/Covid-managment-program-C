@@ -4,3 +4,4 @@
 #endif
 
 int homeMenu();
+int patientLogMenu();

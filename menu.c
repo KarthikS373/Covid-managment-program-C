@@ -19,3 +19,26 @@ int homeMenu(){
     fgets(choices, 2, stdin);
     return (atoi(choices));
 }
+
+
+int patientLogMenu(){
+    printf("\t\t\t\t  Menu: \n");
+    smMARGIN
+    printf("\t\t\t\t      1. Patient Details  \n\n");
+    xsmMARGIN
+    printf("\t\t\t\t      2. Add Issue  \n\n");
+    xsmMARGIN
+    printf("\t\t\t\t      3. Patient summary  \n\n");
+    xsmMARGIN
+    printf("\t\t\t\t      4. Change password  \n\n");
+    xsmMARGIN
+    printf("\t\t\t\t      5. Status  \n\n");
+    xsmMARGIN
+    printf("\t\t\t\t      6. Exit  \n\n");
+    xsmMARGIN
+    printf("\t\t\t\t      ENTER MENU: ");
+    FLUSH
+    char choices[2];
+    fgets(choices, 2, stdin);
+    return (atoi(choices));
+}

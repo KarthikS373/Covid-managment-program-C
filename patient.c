@@ -251,10 +251,30 @@ void _fetchPatientDetails(int ID){
 
 
 
+void _patientAddIssue(int ID, char _patientIssue[]){
+    FILE * patientFile = fopen("./files/patientSummary.csv", "a");
+    if(patientFile == NULL){
+        printf("\t\t\t Service currently unavailable !!\n");
+        printf("\t\t\t Please press and key to return.....\n");
+        getch();
+    } else {
+        time_t current_time;
+        time(&current_time);
+        fprintf(patientFile, "%d, %s", ID, _patientIssue);
+        fprintf(patientFile, ", %s", ctime(&current_time));
+        fprintf(patientFile, "\n");
+        xsmMARGIN
+        printf("\t\t\tIssue added successfully");
+    }
+    fclose(patientFile);
+    return;
+}
+
+
 
 // **************************************** PATIENT LOGIN *****************************************************
 
-void patientLog(){
+void patientLogDetails(){
     system("cls");
     patientTitleBar();
     smMARGIN
@@ -280,4 +300,50 @@ void patientLog(){
     MARGIN
 }
 
+void patientIssue(){
+    system("cls");
+    patientTitleBar();
+    smMARGIN
+    char Identify[10];
+    FLUSH
+    printf("\t\t\t Enter the patient ID : ");
+    gets(Identify);
+    int ID  = atoi(Identify);
+    char * passwd = _authorizeLogin(ID); // returns the password as a string pointer
+    char pass[100];
+    if(!strcmp(passwd, "error__")){
+        xsmMARGIN
+        printf("\t\t\t ID not found.....\n");
+        printf("\t\t\t Please press and key to return.....\n");
+        FLUSH
+        getch();
+        return;
+    } else{
+        char _patientIssue[1000];
+        FLUSH
+        xsmMARGIN
+        printf("\t\t\t Enter the Issue : ");
+        FLUSH
+        fgets(_patientIssue, 250, stdin);
+        _patientIssue[strcspn(_patientIssue, "\n")] = 0;
+        _patientAddIssue(ID, _patientIssue);
+    }
+    MARGIN
+}
 
+
+void patientLog(){
+    patientTitleBar();
+    smMARGIN
+    int choice = patientLogMenu();
+    switch(choice){
+        case 1 : 
+            patientLogDetails();
+            break;
+        case 2 : 
+            patientIssue();
+            break;
+        default : 
+            printf("INVALID");
+    }
+}
