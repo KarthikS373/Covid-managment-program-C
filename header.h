@@ -24,5 +24,11 @@
     #include "menu.h"
     #include "title.h"
     #include "graphic.h"
+
+    #ifndef GOTO_XY
+        #define GOTO_XY
+            COORD c;    
+            #define GOTOXY(x, y) c.X = x; c.Y = y; SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+    #endif
     
 #endif
