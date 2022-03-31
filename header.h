@@ -24,5 +24,6 @@
     #include "menu.h"
     #include "title.h"
     #include "graphic.h"
-    
+    #include "covidStats.h"
+
 #endif

@@ -1,20 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "header.h"
 
-int main() {
-    FILE *fp;
+void covidStats () {
+   
+    char city[30];
+    int cases;
+    int deaths;
 
-    fp = fopen("covidStats.csv", "r");
-    
-    if (fp == NULL)
-    {
-        printf("Trouble reading file! \nProgram Terminating ... ");
-        exit(0);
-    }
-    char line [500];
-    while (fgets(line, 500, fp) != NULL)
-    {
-        printf("\n%s", line);
+    FILE * statsfile = fopen("./files/covidStats.csv", "r");
+    if(!statsfile){
+        printf("\t\t\t Services Currently unavailable Sorry for the inconvinience!... !!\n");
+        printf("\t\t\t Please press any key to return.....\n");
+        getch();
+    } else {
+        char line[200];
+        int row = 0;
+        int column = 0;
+
+        while (fgets(line, sizeof(line), statsfile)) {
+            char *value;
+            value = strtok(line, ",");
+            while (value != NULL)
+            {
+                printf("%-52s", value);
+                value = strtok(NULL, ",");
+            }
+            printf("\n");
+            
+            // if(atoi(value) == ID){
+                // value = strtok(NULL, ",");
+            //     return value;
+            // }
+        }
+        
     }
 
 }
