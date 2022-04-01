@@ -17,6 +17,9 @@ int main(){
         case 2:
             patientLog();
             break;
+        case 3:
+            covidStats();
+            break;
         default:
             printf("Invalid entry");
     }
