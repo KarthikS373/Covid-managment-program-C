@@ -1,9 +1,5 @@
 #include "header.h"
 
-COORD c;
-#define GOTOXY(x, y) c.X = x; c.Y = y; SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
-
-
 void _patientDetails(int ID, char name[], int age, char number[], char email[], char gender){
     system("cls");
     MARGIN
@@ -42,4 +38,92 @@ void _patientDetails(int ID, char name[], int age, char number[], char email[], 
 
     printf("\t\t\t---------------------------------------------------------\t\t\t\n");
    
+}
+
+
+
+
+void _patientSummaryGraphics(int ID, char summary[]){
+    system("cls");
+    MARGIN
+    printf("\n\t\t\t---------------------------------------------------------\t\t\t\n");
+    GOTOXY(24, 12); printf("|\n");
+    GOTOXY(80, 12); printf("|\n");
+    xsmMARGIN
+    GOTOXY(45, 16)
+    printf("PATIENT  SUMMARY");
+    GOTOXY(37, 17)
+    printf("-----------------------------");
+    char *value;
+    GOTOXY(37, 20)
+    value = strtok(summary, "\n");
+    printf("%s", value);
+    GOTOXY(37, 21)
+    value = strtok(NULL, "\n");
+    printf("%s", value);
+
+    GOTOXY(37, 23)
+    value = strtok(NULL, "\n");
+    printf("%s", value);
+    GOTOXY(37, 24)
+    value = strtok(NULL, "\n");
+    printf("%s", value);
+
+    GOTOXY(37, 26)
+    value = strtok(NULL, "\n");
+    if(value){
+        printf("%s", value);
+        GOTOXY(37, 27)
+        value = strtok(NULL, "\n");
+        printf("%s", value);
+    }
+
+    GOTOXY(37, 29)
+    value = strtok(NULL, "\n");
+    if(value){
+        printf("%s", value);
+        GOTOXY(37, 30)
+        value = strtok(NULL, "\n");
+        printf("%s", value);
+    }
+
+    GOTOXY(37, 32)
+    value = strtok(NULL, "\n");
+    if(value){
+        printf("%s", value);
+        GOTOXY(37, 33)
+        value = strtok(NULL, "\n");
+        printf("%s", value);
+    }
+
+    GOTOXY(37, 35)
+    value = strtok(NULL, "\n");
+    if(value){    
+        printf("%s", value);
+        GOTOXY(37, 36)
+        value = strtok(NULL, "\n");
+        printf("%s", value);
+    }
+
+    GOTOXY(37, 38)
+    value = strtok(NULL, "\n");
+    if(value){
+        printf("%s", value);
+        GOTOXY(37, 39)
+        value = strtok(NULL, "\n");
+        printf("%s", value);    
+    }
+    
+
+
+    for(int i = 13; i < 42; ++i){
+        GOTOXY(24, i); printf("|\n");
+    }
+
+    for(int i = 13; i < 42; ++i){
+        GOTOXY(80, i); printf("|\n");
+    }
+
+
+    printf("\t\t\t---------------------------------------------------------\t\t\t\n");
 }

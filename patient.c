@@ -37,7 +37,7 @@ void _patientStorePasswd(ull ID, char passwd[]){
         printf("\t\t\t Please press and key to return.....\n");
         getch();
     } else {
-        fprintf(passwdFile, "%llu, %s", ID, passwd );
+        fprintf(passwdFile, "%llu, %s\n", ID, passwd );
         xsmMARGIN
         printf("\t\t\tpassword added successfully");
     }
@@ -262,9 +262,38 @@ void _patientAddIssue(int ID, char _patientIssue[]){
         time(&current_time);
         fprintf(patientFile, "%d, %s", ID, _patientIssue);
         fprintf(patientFile, ", %s", ctime(&current_time));
-        fprintf(patientFile, "\n");
         xsmMARGIN
         printf("\t\t\tIssue added successfully");
+    }
+    fclose(patientFile);
+    return;
+}
+
+char __summary[(int)1e5] = "";
+void _patientSummary(int ID){
+    FILE * patientFile = fopen("./files/patientSummary.csv", "r");
+    if(patientFile == NULL){
+        printf("\t\t\t Service currently unavailable !!\n");
+        printf("\t\t\t Please press and key to return.....\n");
+        getch();
+    } else {
+        char line[200];
+        int row = 0;
+        int column = 0;
+        while (fgets(line, sizeof(line), patientFile)) {
+            char *value;
+            value = strtok(line, ",");
+            if(atoi(value) == ID){
+                value = strtok(NULL, ",");
+                char temp[1000] = "";
+                strcat(temp, value);
+                value = strtok(NULL, ",");
+                strcat(__summary, value);
+                strcat(__summary, " :\t");
+                strcat(__summary, temp);
+                strcat(__summary, "\n");
+            }
+        }
     }
     fclose(patientFile);
     return;
@@ -330,7 +359,32 @@ void patientIssue(){
     }
     MARGIN
 }
-
+void patientSummary(){
+    system("cls");
+    patientTitleBar();
+    smMARGIN
+    char Identify[10];
+    printf("\t\t\t Enter the patient ID : ");
+    FLUSH
+    gets(Identify);
+    int ID  = atoi(Identify);
+    char * passwd = _authorizeLogin(ID); // returns the password as a string pointer
+    char pass[100];
+    if(!strcmp(passwd, "error__")){
+        xsmMARGIN
+        printf("\t\t\t ID not found.....\n");
+        printf("\t\t\t Please press and key to return.....\n");
+        FLUSH
+        getch();
+        return;
+    } else{
+        FLUSH
+        _patientSummary(ID);
+        _patientSummaryGraphics(ID, __summary);
+        strcpy(__summary, "");
+    }
+    MARGIN
+}
 
 void patientLog(){
     patientTitleBar();
@@ -342,6 +396,9 @@ void patientLog(){
             break;
         case 2 : 
             patientIssue();
+            break;
+        case 3 : 
+            patientSummary();
             break;
         default : 
             printf("INVALID");
