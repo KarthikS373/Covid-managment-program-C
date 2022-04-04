@@ -25,6 +25,7 @@
     #include "menu.h"
     #include "title.h"
     #include "graphic.h"
+    #include "doctor.h"
     #include "health.h"
     #include "covidStats.h"
 

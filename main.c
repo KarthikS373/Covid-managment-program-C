@@ -20,6 +20,9 @@ int main(){
         case 3:
             covidStats();
             break;
+        case 4:
+            select_doc();
+            break;
         case 5:
             health();
             break;
