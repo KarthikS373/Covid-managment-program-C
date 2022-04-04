@@ -20,8 +20,11 @@ int main(){
         case 3:
             covidStats();
             break;
+        case 5:
+            health();
+            break;
         default:
-            printf("Invalid entry");
+            printf("Invalid entry!");
     }
 
     xsmMARGIN

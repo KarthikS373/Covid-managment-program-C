@@ -18,12 +18,14 @@
     #define TAB 9
     #define BKSP 8
     #define SPACE 32
+    #define MAX_LIMIT 50
     #define FLUSH fflush(stdin); fflush(stdout);
 
     #include "pateint.h"
     #include "menu.h"
     #include "title.h"
     #include "graphic.h"
+    #include "health.h"
     #include "covidStats.h"
 
     #ifndef GOTO_XY
