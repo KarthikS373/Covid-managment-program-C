@@ -3,4 +3,4 @@
     #include "graphic.c"
 #endif
 
-void _patientDetails();
+void _patientDetails(int , char *, int, char *, char *, char);

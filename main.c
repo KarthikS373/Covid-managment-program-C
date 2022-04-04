@@ -17,8 +17,11 @@ int main(){
         case 2:
             patientLog();
             break;
+        case 5:
+            health();
+            break;
         default:
-            printf("Invalid entry");
+            printf("Invalid entry!");
     }
 
     xsmMARGIN
