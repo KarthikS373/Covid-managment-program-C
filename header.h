@@ -7,6 +7,8 @@
     #include<string.h>
     #include<stdlib.h>
     #include<time.h>
+    #include <unistd.h>
+    #include <dos.h>
 
     typedef unsigned long long ull;
     typedef long long ll;

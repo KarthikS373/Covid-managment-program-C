@@ -53,7 +53,7 @@ void select_doc()
 						char o[30],f[30],r[5];
 			        	unsigned int s,d,h,m,a,z,mom,stop=0,i;
                         FILE *cfp;	
-	                    if((cfp=fopen("Doctor.txt", "a" ))==NULL)
+	                    if((cfp=fopen("./files/Doctor.txt", "a" ))==NULL)
                         {
 	                        puts("File could not be opened");
                         }
@@ -91,7 +91,7 @@ void select_doc()
 					    char o[30],f[30],r[5];
 			         	unsigned int s,d,h,m,a,z,mom,stop=0,i;								
 				    	FILE *read;
-                        if((read=fopen("Doctor.txt", "r" ))==NULL)
+                        if((read=fopen("./files/Doctor.txt", "r" ))==NULL)
                         {
 	                        puts("File could not be opened");
                         }
@@ -130,7 +130,7 @@ void select_doc()
 			        	int ruk=0;
 				    	system ("CLS");
                         FILE *cfr,*cr;
-                        if((cfr=fopen("Doctor.txt", "r" ))==NULL)
+                        if((cfr=fopen("./files/Doctor.txt", "r" ))==NULL)
                         {
 		                    puts("File could not be opened");
 	                    }
@@ -156,7 +156,7 @@ void select_doc()
 								}
                                 else
 		                     	{
-		                            if((cr=fopen("hosp.txt","a"))==NULL)
+		                            if((cr=fopen("./files/hosp.txt","a"))==NULL)
 				                    {
 	                                    puts("File could not be opened");
 		                            }
@@ -172,8 +172,8 @@ void select_doc()
                             }  
                                 fclose(cfr);
                         }
-                        remove("Doctor.txt");
-                        rename("hosp.txt","Doctor.txt");
+                        remove("./files/Doctor.txt");
+                        rename("./files/hosp.txt","./files/Doctor.txt");
 				    	if(ruk==0)
 			        	{
     		    	    	printf("\n     Doctor of ID: %d Not Exist\n",z);

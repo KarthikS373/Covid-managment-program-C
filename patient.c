@@ -400,6 +400,8 @@ void patientLog(){
         case 3 : 
             patientSummary();
             break;
+        case 4 :
+            return;
         default : 
             printf("INVALID");
     }

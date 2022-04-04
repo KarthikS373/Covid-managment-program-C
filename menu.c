@@ -13,6 +13,8 @@ int homeMenu(){
     xsmMARGIN
     printf("\t\t\t\t      5. Health Check  \n\n");
     xsmMARGIN
+    printf("\t\t\t\t      6. Exit  \n\n");
+    xsmMARGIN
     printf("\t\t\t\t      ENTER MENU: ");
     FLUSH
     char choices[2];
