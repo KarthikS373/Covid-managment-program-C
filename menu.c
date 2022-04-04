@@ -9,7 +9,7 @@ int homeMenu(){
     xsmMARGIN
     printf("\t\t\t\t      3. Covid Stats  \n\n");
     xsmMARGIN
-    printf("\t\t\t\t      4. Vaccinne helper  \n\n");
+    printf("\t\t\t\t      4. Doctor List  \n\n");
     xsmMARGIN
     printf("\t\t\t\t      5. Health Check  \n\n");
     xsmMARGIN

@@ -17,6 +17,9 @@ int main(){
         case 2:
             patientLog();
             break;
+        case 4:
+            select_doc();
+            break;
         default:
             printf("Invalid entry");
     }
