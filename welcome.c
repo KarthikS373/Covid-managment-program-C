@@ -13,6 +13,4 @@ void welcomeScreen(){
     printf("\t\t\t\tPress any key to continue.........");
     getch();
     system("cls");
-
-}       
-                  
+}                       

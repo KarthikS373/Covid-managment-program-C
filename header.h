@@ -18,6 +18,7 @@
     #define TAB 9
     #define BKSP 8
     #define SPACE 32
+    #define MAX_LIMIT 50
     #define FLUSH fflush(stdin); fflush(stdout);
 
     #include "pateint.h"
@@ -25,11 +26,13 @@
     #include "title.h"
     #include "graphic.h"
     #include "doctor.h"
+    #include "health.h"
+    #include "covidStats.h"
 
     #ifndef GOTO_XY
         #define GOTO_XY
             COORD c;    
             #define GOTOXY(x, y) c.X = x; c.Y = y; SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
     #endif
-    
+
 #endif
