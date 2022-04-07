@@ -9,7 +9,7 @@ typedef struct patient{
     char contactNumber[11];
     char email[30];
     char passwd[20];
-    } patient;
+} patient;
 
 
 // ********************************************** PATIENT FILE INSERTING **********************************************
@@ -325,6 +325,7 @@ void patientLogDetails(){
     } else{
         _fetchPatientDetails(ID);
         _patientDetails(__CurrentPatient.ID, __currentPatientName, __CurrentPatient.age, __CurrentPatient.contactNumber, __CurrentPatient.email, __CurrentPatient.gender); 
+        getch();
     }
     MARGIN
 }
@@ -382,6 +383,7 @@ void patientSummary(){
         _patientSummary(ID);
         _patientSummaryGraphics(ID, __summary);
         strcpy(__summary, "");
+        getch();
     }
     MARGIN
 }

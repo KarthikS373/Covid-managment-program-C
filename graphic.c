@@ -64,10 +64,12 @@ void _patientSummaryGraphics(int ID, char summary[]){
 
     GOTOXY(37, 23)
     value = strtok(NULL, "\n");
-    printf("%s", value);
-    GOTOXY(37, 24)
-    value = strtok(NULL, "\n");
-    printf("%s", value);
+    if(value){
+        printf("%s", value);
+        GOTOXY(37, 24)
+        value = strtok(NULL, "\n");
+        printf("%s", value);
+    }
 
     GOTOXY(37, 26)
     value = strtok(NULL, "\n");
